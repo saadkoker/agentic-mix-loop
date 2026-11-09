@@ -1,0 +1,114 @@
+# Default settings. A song project can override any of these with its own
+# config.toml (same keys, only the ones you want to change).
+
+[audio]
+target_lufs = -14.0          # every candidate is loudness-matched to this before scoring
+ceiling_dbtp = -1.0          # fixed final limiter ceiling, no agent can edit
+loud_master_lufs = -9.0      # the extra "loud master" render on stop
+
+[score]
+w_pq = 0.7                   # production quality (0.7/0.3 chosen by `axes` on 6 songs: wider separation than 0.5/0.5)
+w_ce = 0.3                   # content enjoyment
+w_pc = 0.0                   # production complexity (rises with density / over-compression: gameable)
+w_cu = 0.0                   # content usefulness
+w_worst = 0.2                # weight on the worst window's weighted mean of the axes in use
+# `python mixloop.py axes` compares weightings on every song's Phase 0 data
+window_s = 10.0
+hop_s = 5.0
+noise_multiplier = 2.0       # without the re-test: acceptance margin = this x measured noise spread
+min_margin = 0.005           # floor in case measured noise is ~0
+# Re-test (confirm = true): a candidate must first beat the best by screen_sigma x the judge-noise
+# std; the round's top candidate and the current best are then both re-scored under 6 inaudible
+# variants (+/-1 sample shift, +/-0.1 dB, +/-0.1 dB on the loudest track's fader; the original
+# version the candidate was picked on is left out) and it is kept only if the AVERAGE gain beats
+# confirm_sigma x std. Averaging cuts the jitter ~2.5x, so real small gains get through without
+# letting noise in.
+confirm = true
+screen_sigma = 3.5
+confirm_sigma = 3.0
+confirm_tries = 2            # how many of a round's top candidates may be re-tested
+batch_size = 4                # windows per GPU call; small keeps each kernel far under the Windows ~2 s GPU watchdog (TDR)
+
+[guardrails]
+true_peak_dbtp = -1.0
+dc_offset = 0.001
+corr_min = 0.2
+low_corr_min = 0.8
+low_corr_hz = 150.0
+plr_min_db = 8.0
+stem_presence_db = 18.0
+click_ratio = 6.0
+click_floor = 0.001          # ignore jumps smaller than this (−60 dBFS)
+click_extra_allowed = 3      # clicks allowed beyond what the baseline already has
+length_tol = 1
+
+[harness]
+allowed_imports = ["numpy", "scipy.signal", "pedalboard", "math"]
+silence_dbfs = -90.0
+max_gain_db = 24.0
+max_latency_ms = 5.0
+realtime_factor = 2.0        # must process at least this many x faster than real time
+speed_test_s = 30.0          # length of the speed test signal (extrapolated to 3 min)
+eq_thd_db = -50.0            # EQ / gain_pan: harmonics must stay below this
+alias_db = -45.0             # sat / clip: aliasing (non-harmonic energy) must stay below this
+linear_tol_db = 0.1
+
+[limits]                     # max plugins of each type per track / bus / master chain
+eq = 2
+comp = 2                     # stock:comp, stock:deess and custom compressors
+sat = 1
+clip = 1
+gain_pan = 1
+pitch = 1                    # stock:tune or a custom tuner
+gate = 1
+space = 1                    # stock:reverb / stock:delay (usually on a send bus)
+
+[loop]
+phase = 5                    # 2..5, see README
+max_rounds = 60
+max_usd = 20.0
+max_hours = 12.0
+plateau_rounds = 8           # stop after this many rounds without an accepted change
+slow_window = 15             # stop if score rose < slow_delta over this many rounds
+slow_delta = 0.05
+stems_per_round = 3
+candidates_per_agent = 3
+diagnose_every = 1           # accepted changes between Audiobox diagnoses (the only critique)
+diagnose_step_db = 3.0       # per-stem sensitivity probe: score with each stem -/+ this many dB
+master_every = 5             # rounds between master-bus passes
+holdout_every = 10           # rounds between hold-out checks
+listen_every = 10            # accepted changes between your blind listening checks
+listen_clip_s = 20.0
+combine_winners = true
+save_candidate_renders = false
+agent_mode = "tools"         # "tools": agents measure / audition / write plugins at the console (agentic DAW);
+                             # "oneshot": the older single-reply agents
+agent_max_steps = 14         # tool-calling turns per agent per round (the last one forces submit)
+agent_auditions = 4          # judge auditions per agent per round
+agent_plugin_writes = 4      # harness runs per agent per round
+
+[audit]                      # outside ear (core/outside_ear.py): leads for the orchestrator, never a score
+enabled = false
+model = "google/gemini-4-argon"
+every = 10                   # rounds between listens
+plateau = 4                  # also listen once per stall of this many rounds without an accept
+runs = 2                     # independent listens; only problems heard in every one are passed on
+audio_sr = 44100             # the audit hears full-band stereo (cards still use models.audio_sr mono)
+channels = 2
+
+[models]                     # all calls go through OpenRouter
+base_url = "https://openrouter.ai/api/v1"
+api_key_env = "OPENROUTER_API_KEY"
+orchestrator = "anthropic/claude-opus-5.5"
+stem_agent = "openai/gpt-6.1-sol"        # implementation models: write + tune the plugins
+listener = "google/gemini-3.8-flash"
+timeout_s = 300
+max_retries = 3
+audio_sr = 16000             # audio sent to Gemini is resampled to this (mono)
+audio_format = "mp3"         # mp3 keeps requests small; "wav" also works
+# Gemini always hears the FULL stem / mix. Audio is split into parts of
+# chunk_s seconds (labelled with absolute times). If all parts fit in one
+# request they go together; otherwise each group is described separately and
+# a final call stitches the descriptions into one card.
+chunk_s = 60
+max_request_mb = 18

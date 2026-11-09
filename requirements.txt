@@ -1,0 +1,11 @@
+# Install PyTorch first for your CUDA version: https://pytorch.org/get-started/locally/
+numpy>=1.26,<2
+scipy>=1.12
+soundfile>=0.12
+pyloudnorm>=0.1.1
+pedalboard>=0.9
+numba>=0.59
+requests>=2.31
+matplotlib>=3.8
+audiobox_aesthetics>=0.0.4
+sounddevice>=0.4   # optional: only for the interactive blind listening check

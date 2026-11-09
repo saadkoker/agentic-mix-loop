@@ -1,0 +1,470 @@
+{
+ "flat": {
+  "runs": [
+   {
+    "issues": [
+     {
+      "time": "0:03-0:10",
+      "issue": "The modulated synthesizer sweep is too loud and harsh in the upper-midrange, briefly overshadowing the entrance of the lead vocal.",
+      "severity": "minor",
+      "kind": "mix"
+     },
+     {
+      "time": "0:35-0:38",
+      "issue": "The percussive build-up sounds thin, boxy, and dry compared to the wide, reverberant mix that follows.",
+      "severity": "minor",
+      "kind": "mix"
+     },
+     {
+      "time": "0:38-1:03",
+      "issue": "The chorus mix is overly dense and muddy in the low-mids; the heavy bass and pads mask the drum transients and bury the lead vocal, reducing lyric intelligibility.",
+      "severity": "moderate",
+      "kind": "mix"
+     },
+     {
+      "time": "1:04-1:09",
+      "issue": "The clean electric guitar in the breakdown sounds overly dry and disconnected from the rest of the track's ambient space, with audible, unpolished fret and pick noises.",
+      "severity": "minor",
+      "kind": "mix"
+     },
+     {
+      "time": "1:22-1:52",
+      "issue": "Multiple overlapping vocal melodies and harmonies occupy the same central space and frequency range without clear level prioritization or panning separation, making the vocals sound cluttered and indistinct.",
+      "severity": "moderate",
+      "kind": "mix"
+     },
+     {
+      "time": "1:52-2:18",
+      "issue": "The dense layering of vocals, pads, and guitars causes severe midrange congestion, completely masking the snare drum and making the lead vocal difficult to understand.",
+      "severity": "moderate",
+      "kind": "mix"
+     },
+     {
+      "time": "2:23-3:04",
+      "issue": "The counter-melody vocals and background harmonies are mixed at nearly the same level as the lead vocal, creating a chaotic and muddy vocal presentation where lyrics are lost.",
+      "severity": "moderate",
+      "kind": "mix"
+     },
+     {
+      "time": "3:04-3:32",
+      "issue": "In the final climax, the mix becomes overwhelmed with low-mid buildup and wash from reverbs and cymbals, causing the drums to lose punch and the competing vocal lines to blur together.",
+      "severity": "moderate",
+      "kind": "mix"
+     }
+    ],
+    "overall": "This track has an expansive, atmospheric arrangement, but the mix suffers from significant midrange congestion and vocal clutter during the denser sections. As additional vocal harmonies, counter-melodies, and synth pads are introduced, they compete for the same frequency space and stereo placement, which severely reduces lyric intelligibility and masks the punch of the drums. Carving out low-mid mud, using panning and EQ to separate the overlapping vocal parts, and automating levels to establish a clear focal point would greatly improve the clarity and impact of the mix."
+   },
+   {
+    "issues": [
+     {
+      "time": "0:08-0:38",
+      "issue": "The lead vocal is panned to the left while the backing vocal is panned to the right, creating an unbalanced stereo image.",
+      "severity": "moderate",
+      "kind": "mix"
+     },
+     {
+      "time": "0:38-1:03",
+      "issue": "The distorted guitar and bass are too loud and muddy, masking the drums and vocals.",
+      "severity": "moderate",
+      "kind": "mix"
+     },
+     {
+      "time": "0:38-1:03",
+      "issue": "The drums lack punch and clarity, especially the kick and snare, which are buried in the mix.",
+      "severity": "moderate",
+      "kind": "mix"
+     },
+     {
+      "time": "1:04-1:08",
+      "issue": "There is audible fret buzz, clicking, and handling noise from the electric guitar.",
+      "severity": "minor",
+      "kind": "recording"
+     },
+     {
+      "time": "1:09-1:21",
+      "issue": "The clean electric guitar on the right is much louder than the vocals on the left, creating a lopsided stereo image.",
+      "severity": "moderate",
+      "kind": "mix"
+     },
+     {
+      "time": "1:21-1:50",
+      "issue": "Multiple overlapping vocal lines with similar frequency content and panning clash with each other, making the lyrics completely unintelligible.",
+      "severity": "major",
+      "kind": "mix"
+     },
+     {
+      "time": "1:50-2:16",
+      "issue": "The overlapping vocal tracks are cluttered and buried under the muddy low-mid frequencies of the bass, guitars, and organs.",
+      "severity": "major",
+      "kind": "mix"
+     },
+     {
+      "time": "1:50-2:16",
+      "issue": "The drums sound distant, boxy, and lack transient definition.",
+      "severity": "moderate",
+      "kind": "mix"
+     },
+     {
+      "time": "2:16-3:02",
+      "issue": "Three or more overlapping vocal melodies compete in the same frequency range without clear level or spatial separation, resulting in a chaotic and unintelligible vocal mix.",
+      "severity": "major",
+      "kind": "mix"
+     },
+     {
+      "time": "3:02-3:30",
+      "issue": "The mix is overly dense and muddy in the low-mids, with competing vocal lines, guitars, and keys masking the drums and each other.",
+      "severity": "major",
+      "kind": "mix"
+     }
+    ],
+    "overall": "The mix suffers significantly from severe vocal clutter and poor frequency separation. Throughout the second half of the song, multiple overlapping vocal melodies compete at similar volumes and frequencies, rendering the lyrics unintelligible. Additionally, the stereo image is often unbalanced, and when the full band enters, a heavy buildup in the low-mid frequencies makes the mix sound muddy and buries the drums."
+   }
+  ],
+  "merged": [
+   {
+    "time": "0:38-1:03",
+    "issue": "The chorus is overly dense and muddy in the low-mids, with the heavy bass (plus pads or distorted guitar) too loud and masking the drums and burying the lead vocal.",
+    "severity": "moderate",
+    "kind": "mix"
+   },
+   {
+    "time": "1:04-1:08",
+    "issue": "The clean electric guitar in the breakdown has audible fret buzz, pick clicks and handling noise.",
+    "severity": "minor",
+    "kind": "recording"
+   },
+   {
+    "time": "1:22-1:50",
+    "issue": "Multiple overlapping vocal melodies and harmonies share the same frequency range and panning without clear separation, making the vocals cluttered and the lyrics hard to understand.",
+    "severity": "moderate",
+    "kind": "mix"
+   },
+   {
+    "time": "1:52-2:16",
+    "issue": "Dense layering of vocals, guitars and pads or organs creates muddy midrange congestion that masks the drums and buries the cluttered vocals.",
+    "severity": "moderate",
+    "kind": "mix"
+   },
+   {
+    "time": "2:23-3:02",
+    "issue": "The overlapping counter-melody and background vocals sit at nearly the same level and in the same space as the lead vocal, creating a chaotic vocal mix where the lyrics are lost.",
+    "severity": "moderate",
+    "kind": "mix"
+   },
+   {
+    "time": "3:04-3:30",
+    "issue": "The final climax is overly dense with low-mid buildup, causing the drums to be masked and lose punch while the competing vocal lines blur together.",
+    "severity": "moderate",
+    "kind": "mix"
+   }
+  ]
+ },
+ "over_compressed": {
+  "runs": [
+   {
+    "issues": [
+     {
+      "time": "0:00-0:36",
+      "issue": "The mix feels completely narrow and collapsed into the center, lacking stereo width.",
+      "severity": "moderate",
+      "kind": "mix"
+     },
+     {
+      "time": "0:36-1:03",
+      "issue": "The distorted guitar sounds harsh and abrasive in the upper-midrange, masking the vocals.",
+      "severity": "moderate",
+      "kind": "mix"
+     },
+     {
+      "time": "0:36-1:03",
+      "issue": "The drums sound boxy, distant, and lack low-end punch and transient definition.",
+      "severity": "moderate",
+      "kind": "mix"
+     },
+     {
+      "time": "1:03-1:21",
+      "issue": "The clean electric guitar is overly loud, dry, and pokes out unnaturally in front of the vocals and rhythm section.",
+      "severity": "major",
+      "kind": "mix"
+     },
+     {
+      "time": "1:21-2:16",
+      "issue": "Multiple overlapping vocal tracks are competing at similar volumes and frequencies in the center, making the lyrics completely unintelligible and the midrange cluttered.",
+      "severity": "major",
+      "kind": "mix"
+     },
+     {
+      "time": "2:16-3:30",
+      "issue": "The overlapping vocal layers and clean guitar clash heavily in the midrange, creating a chaotic and muddy texture with no clear focal point.",
+      "severity": "major",
+      "kind": "mix"
+     }
+    ],
+    "overall": "The mix suffers from severe midrange congestion and balance issues, primarily due to multiple overlapping vocal parts competing at the same level and an overly loud, dry clean guitar. Additionally, the drums sound distant and boxy, and the distorted guitars are harsh."
+   },
+   {
+    "issues": [
+     {
+      "time": "0:03-0:10",
+      "issue": "Low rumble sound gets way too loud and subby.",
+      "severity": "moderate",
+      "kind": "mix"
+     },
+     {
+      "time": "0:37-1:01",
+      "issue": "Drum machine hi-hat ticks are very loud and grating on the ear.",
+      "severity": "minor",
+      "kind": "mix"
+     },
+     {
+      "time": "0:37-1:01",
+      "issue": "Kick and snare sounds of the drum kit are both very quiet and muted.",
+      "severity": "moderate",
+      "kind": "mix"
+     },
+     {
+      "time": "1:04-2:08",
+      "issue": "Electric guitar in the right channel is very quiet compared to the one in the left channel, leaving the mix unbalanced.",
+      "severity": "moderate",
+      "kind": "mix"
+     },
+     {
+      "time": "1:04-1:50",
+      "issue": "Clicking percussion sound is dry and a little dull.",
+      "severity": "minor",
+      "kind": "mix"
+     },
+     {
+      "time": "1:20-2:16",
+      "issue": "When multiple vocal tracks are overlapping with different melodies and lyrics, it becomes very cluttered and hard to hear any individual vocal clearly.",
+      "severity": "moderate",
+      "kind": "mix"
+     },
+     {
+      "time": "1:50-2:16",
+      "issue": "The drum kit is very quiet and buried in the mix.",
+      "severity": "major",
+      "kind": "mix"
+     },
+     {
+      "time": "2:16-3:32",
+      "issue": "The overlapping vocal parts are cluttered and lack clarity or definition between them.",
+      "severity": "moderate",
+      "kind": "mix"
+     },
+     {
+      "time": "2:16-2:58",
+      "issue": "The electric guitar in the right channel is much quieter than the one in the left channel, leaving the mix unbalanced.",
+      "severity": "moderate",
+      "kind": "mix"
+     },
+     {
+      "time": "2:16-2:58",
+      "issue": "The clicking percussion sound is dry and dull.",
+      "severity": "minor",
+      "kind": "mix"
+     },
+     {
+      "time": "2:58-3:32",
+      "issue": "The drum kit is very quiet and buried in the mix.",
+      "severity": "major",
+      "kind": "mix"
+     },
+     {
+      "time": "3:36",
+      "issue": "The final sound cuts off abruptly instead of fading out naturally.",
+      "severity": "minor",
+      "kind": "mix"
+     }
+    ],
+    "overall": "This song has a cool, experimental rock vibe, with lots of lush vocal harmonies and layers. However, the mix has several significant issues that detract from the listening experience. Most notably, the drums are very quiet and buried whenever they enter, lacking any real punch or impact. Additionally, the stereo image is quite unbalanced in the verses, with the left guitar much louder than the right. Finally, when multiple overlapping vocal parts are singing different melodies and lyrics at the same time, they tend to clash and become muddled, making it hard to pick out any single part clearly."
+   }
+  ],
+  "merged": [
+   {
+    "time": "0:37-1:01",
+    "issue": "The drums sound distant and muted, with quiet kick and snare lacking low-end punch and transient definition.",
+    "severity": "moderate",
+    "kind": "mix"
+   },
+   {
+    "time": "1:21-2:16",
+    "issue": "Multiple overlapping vocal tracks compete with each other, making the midrange cluttered and the lyrics and individual vocals hard to hear clearly.",
+    "severity": "moderate",
+    "kind": "mix"
+   },
+   {
+    "time": "2:16-3:30",
+    "issue": "The overlapping vocal layers are cluttered and lack clarity or definition between them.",
+    "severity": "moderate",
+    "kind": "mix"
+   }
+  ]
+ },
+ "harsh_top": {
+  "runs": [
+   {
+    "issues": [
+     {
+      "time": "0:39-1:03",
+      "issue": "The bass guitar is masking the kick drum, making it barely audible.",
+      "severity": "moderate",
+      "kind": "mix"
+     },
+     {
+      "time": "0:39-1:03",
+      "issue": "The crash and ride cymbals are overly loud and resonant, dominating the mix.",
+      "severity": "major",
+      "kind": "mix"
+     },
+     {
+      "time": "1:04-1:50",
+      "issue": "The electric guitar's mid-range frequencies are too prominent, overpowering the vocals.",
+      "severity": "moderate",
+      "kind": "mix"
+     },
+     {
+      "time": "1:20-1:52",
+      "issue": "Multiple overlapping vocal lines lack separation and sound cluttered.",
+      "severity": "major",
+      "kind": "mix"
+     },
+     {
+      "time": "1:50-2:16",
+      "issue": "The bass guitar is masking the kick drum, making it barely audible.",
+      "severity": "moderate",
+      "kind": "mix"
+     },
+     {
+      "time": "1:52-2:16",
+      "issue": "The crash and ride cymbals are overly loud and resonant, dominating the mix.",
+      "severity": "major",
+      "kind": "mix"
+     },
+     {
+      "time": "1:52-2:17",
+      "issue": "The lead vocal is buried in the mix, making the lyrics difficult to understand.",
+      "severity": "major",
+      "kind": "mix"
+     },
+     {
+      "time": "2:17-3:03",
+      "issue": "The electric guitar's mid-range frequencies are too prominent, overpowering the vocals.",
+      "severity": "moderate",
+      "kind": "mix"
+     },
+     {
+      "time": "2:21-3:03",
+      "issue": "Multiple overlapping vocal lines lack separation and sound cluttered.",
+      "severity": "major",
+      "kind": "mix"
+     },
+     {
+      "time": "3:02-3:30",
+      "issue": "The bass guitar is masking the kick drum, making it barely audible.",
+      "severity": "moderate",
+      "kind": "mix"
+     },
+     {
+      "time": "3:03-3:30",
+      "issue": "The crash and ride cymbals are overly loud and resonant, dominating the mix.",
+      "severity": "major",
+      "kind": "mix"
+     },
+     {
+      "time": "3:04-3:31",
+      "issue": "The lead vocal is buried in the mix, making the lyrics difficult to understand.",
+      "severity": "major",
+      "kind": "mix"
+     }
+    ],
+    "overall": "The mix suffers from significant balance and frequency masking issues. In the louder sections, overly loud and resonant cymbals dominate the high end, while the bass completely masks the kick drum, resulting in a lack of low-end punch. Additionally, the lead vocals get buried beneath the instrumentation during these fuller parts. In the verses, multiple overlapping vocal layers clash and sound cluttered, while a mid-heavy electric guitar further competes with the vocals for space."
+   },
+   {
+    "issues": [
+     {
+      "time": "0:03-0:11",
+      "issue": "The bass fades in too early before the guitar intro has finished, making the timing feel awkward.",
+      "severity": "moderate",
+      "kind": "arrangement"
+     },
+     {
+      "time": "0:37-1:03",
+      "issue": "The bass guitar lacks definition and punch, blending into the low end without a clear presence.",
+      "severity": "moderate",
+      "kind": "mix"
+     },
+     {
+      "time": "0:37-1:03",
+      "issue": "The vocals are too quiet and lack high-mid presence, making them get buried under the dense instrumental backing.",
+      "severity": "major",
+      "kind": "mix"
+     },
+     {
+      "time": "0:37-1:03",
+      "issue": "The snare drum sounds thin and lacks body, failing to cut through the mix effectively.",
+      "severity": "moderate",
+      "kind": "mix"
+     },
+     {
+      "time": "1:04-1:10",
+      "issue": "The clean electric guitar is too dry and lacks spatial depth, feeling disconnected from the rest of the mix.",
+      "severity": "minor",
+      "kind": "mix"
+     },
+     {
+      "time": "1:10-1:52",
+      "issue": "Multiple overlapping vocal lines are mixed at similar volumes and panned too close together, creating a cluttered and unintelligible vocal arrangement.",
+      "severity": "major",
+      "kind": "mix"
+     },
+     {
+      "time": "1:52-2:18",
+      "issue": "The lead and backing vocals clash in both volume and frequency range, making the lyrics difficult to understand.",
+      "severity": "major",
+      "kind": "mix"
+     },
+     {
+      "time": "1:52-2:18",
+      "issue": "The snare drum remains weak and lacks impact during the chorus.",
+      "severity": "moderate",
+      "kind": "mix"
+     },
+     {
+      "time": "2:18-3:04",
+      "issue": "The overlapping vocal tracks continue to compete for the same space without clear level differentiation or panning, resulting in a muddy midrange.",
+      "severity": "major",
+      "kind": "mix"
+     },
+     {
+      "time": "3:04-3:30",
+      "issue": "The vocals and guitars build up in the midrange, causing the final chorus to sound congested and indistinct.",
+      "severity": "major",
+      "kind": "mix"
+     }
+    ],
+    "overall": "The song has an interesting, experimental arrangement, but the mix struggles heavily with vocal clarity and balance. Throughout the track, multiple overlapping vocal parts are mixed at nearly identical volumes without enough spatial separation or EQ carving, making them clash and obscuring the lyrics. Additionally, the rhythm section lacks punch, with a weak snare drum and a bass that gets lost during the fuller chorus sections."
+   }
+  ],
+  "merged": [
+   {
+    "time": "1:20-1:52",
+    "issue": "Multiple overlapping vocal lines are mixed at similar volumes and panned too close together, lacking separation and sounding cluttered and unintelligible.",
+    "severity": "major",
+    "kind": "mix"
+   },
+   {
+    "time": "1:52-2:17",
+    "issue": "The lead vocal is buried and clashes with the backing vocals in volume and frequency range, making the lyrics difficult to understand.",
+    "severity": "major",
+    "kind": "mix"
+   },
+   {
+    "time": "2:21-3:03",
+    "issue": "Overlapping vocal lines continue to compete for the same space without clear level differentiation or panning, lacking separation and sounding cluttered and muddy.",
+    "severity": "major",
+    "kind": "mix"
+   }
+  ]
+ }
+}

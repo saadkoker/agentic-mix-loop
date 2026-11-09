@@ -1,0 +1,114 @@
+{
+ "PQ+CE (plan)": {
+  "passes": 15,
+  "total": 21,
+  "songs_pass": 1,
+  "n_songs": 6,
+  "median_sep": 5.5385702076548595,
+  "worst_sep": -2.5983282091346784,
+  "caught": {
+   "vocal_-10dB": "4/5",
+   "bass_muted": "4/4",
+   "over_compressed": "6/6",
+   "harsh_top": "1/6"
+  }
+ },
+ "PQ": {
+  "passes": 15,
+  "total": 21,
+  "songs_pass": 0,
+  "n_songs": 6,
+  "median_sep": 8.291156504917069,
+  "worst_sep": -4.393796504615038,
+  "caught": {
+   "vocal_-10dB": "4/5",
+   "bass_muted": "4/4",
+   "over_compressed": "6/6",
+   "harsh_top": "1/6"
+  }
+ },
+ "CE": {
+  "passes": 14,
+  "total": 21,
+  "songs_pass": 1,
+  "n_songs": 6,
+  "median_sep": 5.1661594295972515,
+  "worst_sep": -8.800724458222762,
+  "caught": {
+   "vocal_-10dB": "3/5",
+   "bass_muted": "3/4",
+   "over_compressed": "6/6",
+   "harsh_top": "2/6"
+  }
+ },
+ "CU": {
+  "passes": 14,
+  "total": 21,
+  "songs_pass": 1,
+  "n_songs": 6,
+  "median_sep": 3.9809260901158288,
+  "worst_sep": -10.542511934711353,
+  "caught": {
+   "vocal_-10dB": "2/5",
+   "bass_muted": "4/4",
+   "over_compressed": "6/6",
+   "harsh_top": "2/6"
+  }
+ },
+ "PC": {
+  "passes": 7,
+  "total": 21,
+  "songs_pass": 0,
+  "n_songs": 6,
+  "median_sep": -6.324788020115347,
+  "worst_sep": -50.58073080046772,
+  "caught": {
+   "vocal_-10dB": "5/5",
+   "bass_muted": "2/4",
+   "over_compressed": "0/6",
+   "harsh_top": "0/6"
+  }
+ },
+ "PQ+CU": {
+  "passes": 14,
+  "total": 21,
+  "songs_pass": 0,
+  "n_songs": 6,
+  "median_sep": 6.480398127068284,
+  "worst_sep": -3.156769386083996,
+  "caught": {
+   "vocal_-10dB": "3/5",
+   "bass_muted": "4/4",
+   "over_compressed": "6/6",
+   "harsh_top": "1/6"
+  }
+ },
+ "PQ+CE+CU": {
+  "passes": 14,
+  "total": 21,
+  "songs_pass": 1,
+  "n_songs": 6,
+  "median_sep": 5.992844963809384,
+  "worst_sep": -3.2967074353174715,
+  "caught": {
+   "vocal_-10dB": "3/5",
+   "bass_muted": "4/4",
+   "over_compressed": "6/6",
+   "harsh_top": "1/6"
+  }
+ },
+ "all four": {
+  "passes": 13,
+  "total": 21,
+  "songs_pass": 0,
+  "n_songs": 6,
+  "median_sep": 5.266565420970799,
+  "worst_sep": -8.791130140419975,
+  "caught": {
+   "vocal_-10dB": "4/5",
+   "bass_muted": "3/4",
+   "over_compressed": "6/6",
+   "harsh_top": "0/6"
+  }
+ }
+}

@@ -1,0 +1,90 @@
+{
+ "best_mix_run1": {
+  "issues": [
+   {
+    "time": "0:37-0:39",
+    "issue": "The phrasing and spacing here are a bit awkward.",
+    "severity": "minor"
+   },
+   {
+    "time": "1:56-2:43",
+    "issue": "The rap part is noticeably louder than the sung chorus right before it, and the vocal takes over the mix too much.",
+    "severity": "major"
+   },
+   {
+    "time": "3:52",
+    "issue": "The ending cuts off abruptly in the middle of a loop rather than fading out or ending on the downbeat.",
+    "severity": "moderate"
+   }
+  ],
+  "overall": "Overall, it's a pretty good mix, though the rap part around the two-minute mark is noticeably louder than the chorus before it, and the ending cuts off too abruptly.",
+  "usd": 0.015
+ },
+ "best_mix_run2": {
+  "issues": [
+   {
+    "time": "0:10-1:08",
+    "issue": "The lead vocal is slightly muddy and lacks high-end clarity, making it sit slightly behind the beat.",
+    "severity": "minor"
+   },
+   {
+    "time": "0:29-0:35",
+    "issue": "The background vocals and ad-libs are too loud and clash with the lead vocal.",
+    "severity": "moderate"
+   },
+   {
+    "time": "1:08-1:38",
+    "issue": "The rap vocal sounds overly dry and slightly detached from the space of the instrumental.",
+    "severity": "minor"
+   },
+   {
+    "time": "1:28-1:32",
+    "issue": "The pitch-shifted vocal effect is significantly quieter than the main vocal, making the lyrics difficult to understand.",
+    "severity": "moderate"
+   },
+   {
+    "time": "1:56-2:43",
+    "issue": "The second rap verse is mixed too loudly and aggressively, overpowering the instrumental and lacking dynamic control.",
+    "severity": "major"
+   },
+   {
+    "time": "2:21-2:26",
+    "issue": "The vocal layer or ad-lib is poorly timed and clashes with the main vocal, creating a messy texture.",
+    "severity": "moderate"
+   },
+   {
+    "time": "3:06-3:52",
+    "issue": "The outro drags on for too long without sufficient musical variation or a fade-out, and ends abruptly.",
+    "severity": "minor"
+   }
+  ],
+  "overall": "The instrumental has a smooth, pleasant balance, but the vocal mixing is inconsistent across the different performers. The sung chorus is slightly muddy with competing background layers, the first rap verse is a bit dry, and the second rap verse is far too loud and dynamically uncontrolled, sitting on top of the beat rather than inside it.",
+  "usd": 0.0171
+ },
+ "flat_mix_separate_control": {
+  "issues": [
+   {
+    "time": "0:03-0:06",
+    "issue": "Vocal is too quiet compared to the rest of the mix",
+    "severity": "moderate"
+   },
+   {
+    "time": "0:39-0:49",
+    "issue": "Vocal is overprocessed and sounds unnatural",
+    "severity": "moderate"
+   },
+   {
+    "time": "1:56-2:26",
+    "issue": "Vocal is too loud and lacks processing, sounding dry and disconnected from the beat",
+    "severity": "major"
+   },
+   {
+    "time": "2:26-2:46",
+    "issue": "Vocal is too loud and lacks processing, sounding dry and disconnected from the beat",
+    "severity": "major"
+   }
+  ],
+  "overall": "The mix has several issues, primarily with the vocal balancing and processing. The intro vocal is too quiet, and a section in the first verse is overly processed. The biggest issue is in the second verse, where the vocals are far too loud and dry, making them sound completely separate from the instrumental.",
+  "usd": 0.0155
+ }
+}

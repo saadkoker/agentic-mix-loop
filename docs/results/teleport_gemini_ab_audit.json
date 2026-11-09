@@ -1,0 +1,76 @@
+{
+ "song": "teleport",
+ "model": "google/gemini-3.8-flash",
+ "rows": [
+  {
+   "pair": "final#1",
+   "expect": null,
+   "verdict": "split",
+   "run1": "new",
+   "run2": "same",
+   "why": [
+    "Mix B offers better vocal clarity and presence, cutting through the instrumental with more definition. In contrast, Mix A sounds slightly veiled and muddy in the low-mids, with the low end feeling less tight.",
+    "Both mixes sound virtually identical across tonal balance, dynamic impact, stereo width, and vocal processing. Aside from a minor muted vocal snippet in the intro, there is no perceptible difference in mix quality or balance."
+   ],
+   "correct": null,
+   "seconds": 21.1
+  },
+  {
+   "pair": "final#2",
+   "expect": null,
+   "verdict": "split",
+   "run1": "same",
+   "run2": "new",
+   "why": [
+    "Both mixes sound virtually identical in balance, frequency response, dynamic control, stereo imaging, and spatial processing with no discernible difference between them.",
+    "Mix A has a much more cohesive frequency balance and better low-end weight. The 808 and kick hit with deeper, rounder punch, while the vocals sit naturally within the production. Mix B pushes the high-mids and treble too forward, making the vocals and hi-hats sound noticeably harsher and slightly detached from the track."
+   ],
+   "correct": null,
+   "seconds": 35.6
+  },
+  {
+   "pair": "identical",
+   "expect": "same",
+   "verdict": "split",
+   "run1": "same",
+   "run2": "same",
+   "why": [
+    "Both mixes sound virtually identical in frequency balance, vocal level, dynamic punch, and spatial processing with no clearly discernible differences.",
+    "Both mixes sound virtually identical across all sections. The vocal levels, dynamic control, low-end extension of the 808 and kick, stereo imaging, and harmonic balance exhibit no discernable difference."
+   ],
+   "correct": true,
+   "seconds": 20.3
+  },
+  {
+   "pair": "crushed",
+   "expect": "old",
+   "verdict": "split",
+   "run1": "same",
+   "run2": "old",
+   "why": [
+    "Both mixes sound virtually identical in terms of frequency balance, vocal presence, low-end weight, and dynamic impact. Any differences between them are too negligible to declare one superior.",
+    "Mix B has noticeably better clarity and separation across the board. The vocals cut through the mix with greater presence and intelligibility rather than getting swallowed by the low-mids, and the 808/sub-bass is tighter and better controlled, leaving more headroom and breathing room for the rest of the instrumentation."
+   ],
+   "correct": false,
+   "seconds": 34.7
+  },
+  {
+   "pair": "harsh",
+   "expect": "old",
+   "verdict": "split",
+   "run1": "new",
+   "run2": "same",
+   "why": [
+    "Mix B has a more cohesive tonal balance and cleaner low-end definition. In Mix A, the high-mids on the vocals are slightly harsh and sibilant, while the 808 feels a bit boomy and disconnected. Mix B smooths out the vocal top end while retaining clarity, giving the kick and bass better punch and tighter integration.",
+    "Both mixes sound identical in tonal balance, dynamic range, vocal placement, low-end weight, and spatial effects across all sections. There are no perceptible mix differences."
+   ],
+   "correct": false,
+   "seconds": 27.2
+  }
+ ],
+ "usd": 0.1013,
+ "score": {
+  "flat": 9.334567471581536,
+  "best": 9.442257565678776
+ }
+}

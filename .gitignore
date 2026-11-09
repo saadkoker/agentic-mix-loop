@@ -1,0 +1,16 @@
+__pycache__/
+*.pyc
+.venv/
+venv/
+.env
+*.log
+# song projects hold copyrighted multitracks and renders: never commit them
+songs/*
+!songs/README.md
+*.wav
+*.flac
+*.mp3
+*.aif
+*.aiff
+*.zip
+phase0_summary.json
