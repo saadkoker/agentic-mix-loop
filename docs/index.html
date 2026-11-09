@@ -54,9 +54,9 @@
     on their own, hill-climbing on a neural audio judge. <a href="https://github.com/saadkoker/agentic-mix-loop">Code and write-up on GitHub</a>.</p>
   <p class="how">Press play, then switch between <b>Flat</b> and <b>Agent mix</b> while it plays (or press <kbd>Space</kbd>).
     Both versions go through the same fixed limiter and are loudness-matched to −14 LUFS over the whole song, exactly as
-    the judge hears them. In these excerpts the flat version is actually 0.2–0.5 dB louder, so any difference you hear
-    is balance, tone and space, not volume. Each excerpt is the 30-second span where the judge's
-    score rose most. Headphones help.</p>
+    the judge hears them. In these excerpts the two are within 0.3 dB of each other (the flat version is never the
+    quieter one), so any difference you hear is balance, tone and space, not volume. Each excerpt is a chorus, starting two seconds before it; for each song it's the
+    chorus where the judge's score rose most. Headphones help.</p>
 
   <section class="song" data-song="bankroll">
     <h2>Bankroll</h2>
@@ -93,21 +93,29 @@
 </main>
 <script>
 (() => {
+  // Web Audio A/B: both versions are decoded, started on the same clock tick and run through their own
+  // gain node, so switching is a sample-locked 15 ms crossfade. (iOS ignores <audio>.volume, which is why
+  // the old version played both at once there.)
+  const Ctx = window.AudioContext || window.webkitAudioContext;
+  let ctx = null;
   const players = [];
   const fmt = s => `${Math.floor(s / 60)}:${String(Math.floor(s % 60)).padStart(2, "0")}`;
+  try { if (navigator.audioSession) navigator.audioSession.type = "playback"; } catch (e) {}
+
   fetch("audio/clips.json").then(r => r.json()).then(meta => {
     for (const [song, m] of Object.entries(meta)) {
       const el = document.querySelector(`[data-song="${song}"] .range`);
-      if (el) el.textContent = `excerpt ${fmt(m.start_s)}–${fmt(m.end_s)}`;
+      if (el) el.textContent = `${m.section || "excerpt"}, ${fmt(m.start_s)}–${fmt(m.end_s)}`;
     }
   }).catch(() => {});
 
+  const decode = (buf) => new Promise((res, rej) => {
+    const p = ctx.decodeAudioData(buf, res, rej);
+    if (p && p.then) p.then(res, rej);
+  });
+
   document.querySelectorAll(".song").forEach(card => {
     const song = card.dataset.song;
-    const flat = new Audio(`audio/${song}_flat.mp3`);
-    const agent = new Audio(`audio/${song}_agent.mp3`);
-    [flat, agent].forEach(a => { a.preload = "auto"; });
-    let which = "agent";
     const host = card.querySelector(".player");
     host.innerHTML = `
       <button class="play" aria-label="Play">&#9654;</button>
@@ -119,49 +127,94 @@
       <span class="time">0:00</span>`;
     const play = host.querySelector(".play"), bf = host.querySelector(".f"), ba = host.querySelector(".a");
     const bar = host.querySelector(".bar"), fill = bar.firstElementChild, time = host.querySelector(".time");
-    const cur = () => (which === "agent" ? agent : flat);
-    const other = () => (which === "agent" ? flat : agent);
-    const setVol = () => { cur().volume = 1; other().volume = 0; };
-    const playing = () => !cur().paused;
+
+    let buffers = null, loading = null, which = "agent";
+    let srcs = [], gains = null, t0 = 0, offset = 0, playing = false, raf = 0;
+    const dur = () => (buffers ? buffers.agent.duration : 30);
+    const pos = () => (playing ? Math.min(dur(), ctx.currentTime - t0) : offset);
+
+    const load = () => loading || (loading = Promise.all(["flat", "agent"].map(v =>
+      fetch(`audio/${song}_${v}.mp3`).then(r => r.arrayBuffer()).then(decode)))
+      .then(([flat, agent]) => { buffers = { flat, agent }; }));
+
+    const setGains = (fadeS) => {
+      if (!gains) return;
+      const now = ctx.currentTime;
+      for (const v of ["flat", "agent"]) {
+        const g = gains[v].gain, target = v === which ? 1 : 0;
+        g.cancelScheduledValues(now);
+        if (fadeS) { g.setValueAtTime(g.value, now); g.linearRampToValueAtTime(target, now + fadeS); }
+        else g.setValueAtTime(target, now);
+      }
+    };
+
+    const tick = () => {
+      const t = pos();
+      fill.style.width = `${(t / dur()) * 100}%`;
+      time.textContent = fmt(t);
+      if (playing && t >= dur() - 0.01) { p.stop(); offset = 0; fill.style.width = "0%"; time.textContent = "0:00"; return; }
+      if (playing) raf = requestAnimationFrame(tick);
+    };
+
     const p = {
-      stop() { flat.pause(); agent.pause(); play.innerHTML = "&#9654;"; play.setAttribute("aria-label", "Play"); },
-      start() {
+      async start() {
+        if (!ctx) ctx = new Ctx();
+        if (ctx.state === "suspended") await ctx.resume();
         players.forEach(q => q !== p && q.stop());
-        other().currentTime = cur().currentTime;
-        setVol(); flat.play(); agent.play();
+        if (!buffers) {
+          play.textContent = "…"; play.disabled = true;
+          try { await load(); } catch (e) { play.textContent = "!"; play.disabled = false; return; }
+          play.disabled = false;
+        }
+        gains = { flat: ctx.createGain(), agent: ctx.createGain() };
+        srcs = ["flat", "agent"].map(v => {
+          const s = ctx.createBufferSource();
+          s.buffer = buffers[v];
+          s.connect(gains[v]).connect(ctx.destination);
+          return s;
+        });
+        setGains(0);
+        const when = ctx.currentTime + 0.05;
+        srcs.forEach(s => s.start(when, offset));
+        t0 = when - offset;
+        playing = true;
         play.innerHTML = "&#10073;&#10073;"; play.setAttribute("aria-label", "Pause");
+        cancelAnimationFrame(raf); raf = requestAnimationFrame(tick);
+      },
+      stop() {
+        if (!playing) return;
+        offset = pos();
+        playing = false;
+        srcs.forEach(s => { try { s.stop(); } catch (e) {} });
+        srcs = [];
+        cancelAnimationFrame(raf);
+        play.innerHTML = "&#9654;"; play.setAttribute("aria-label", "Play");
       },
       pick(v) {
         if (v === which) return;
-        const t = cur().currentTime; which = v;
-        cur().currentTime = t; other().currentTime = t; setVol();
+        which = v;
+        setGains(0.015);
         bf.setAttribute("aria-pressed", v === "flat"); ba.setAttribute("aria-pressed", v === "agent");
       },
       flip() { p.pick(which === "agent" ? "flat" : "agent"); },
-      playing,
+      isPlaying: () => playing,
     };
     players.push(p);
-    play.onclick = () => (playing() ? p.stop() : p.start());
+
+    play.onclick = () => (playing ? p.stop() : p.start());
     bf.onclick = () => p.pick("flat");
     ba.onclick = () => p.pick("agent");
     bar.onclick = e => {
-      const r = bar.getBoundingClientRect(), d = cur().duration || 30;
-      const t = ((e.clientX - r.left) / r.width) * d;
-      flat.currentTime = agent.currentTime = t;
+      const r = bar.getBoundingClientRect();
+      const t = Math.max(0, Math.min(1, (e.clientX - r.left) / r.width)) * dur();
+      if (playing) { p.stop(); offset = t; p.start(); }
+      else { offset = t; tick(); }
     };
-    agent.addEventListener("timeupdate", () => {
-      const a = cur(), d = a.duration || 30;
-      fill.style.width = `${(a.currentTime / d) * 100}%`;
-      time.textContent = fmt(a.currentTime);
-      if (Math.abs(flat.currentTime - agent.currentTime) > 0.08) other().currentTime = a.currentTime;
-    });
-    agent.addEventListener("ended", () => { p.stop(); flat.currentTime = agent.currentTime = 0; });
-    setVol();
   });
 
   document.addEventListener("keydown", e => {
     if (e.key !== " ") return;
-    const live = players.find(q => q.playing());
+    const live = players.find(q => q.isPlaying());
     if (!live) return;
     e.preventDefault();
     live.flip();

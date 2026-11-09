@@ -12,7 +12,7 @@ prompt. A hill-climbing loop then keeps only the changes that survive a statisti
 
 ### 🎧 [Listen: flat sum vs agent mix (A/B)](https://saadkoker.github.io/agentic-mix-loop/)
 
-Two songs, 30 seconds each. Switch between the raw tracks summed flat and the agents' mix while
+A chorus from each of two songs. Switch between the raw tracks summed flat and the agents' mix while
 it plays; both are loudness-matched. MP3s are in [`docs/audio/`](docs/audio/).
 
 <p align="center">
