@@ -8,11 +8,11 @@
   "song_score_best": 9.8836
  },
  "teleport": {
-  "section": "Chorus 1",
-  "start_s": 14.0,
-  "end_s": 44.0,
-  "window_gain": 0.047,
+  "section": "Chorus 3",
+  "start_s": 150.0,
+  "end_s": 180.0,
+  "window_gain": 0.091,
   "song_score_flat": 9.3346,
-  "song_score_best": 9.4423
+  "song_score_best": 9.4596
  }
 }
