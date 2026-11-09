@@ -10,6 +10,11 @@ their own DSP plugins in Python behind a test harness. They can also audition dr
 judge before submitting. An orchestrator model plans each round and writes every agent's task
 prompt. A hill-climbing loop then keeps only the changes that survive a statistical re-test.
 
+### 🎧 [Listen: flat sum vs agent mix (A/B)](https://saadkoker.github.io/agentic-mix-loop/)
+
+Two songs, 30 seconds each. Switch between the raw tracks summed flat and the agents' mix while
+it plays; both are loudness-matched. MP3s are in [`docs/audio/`](docs/audio/).
+
 <p align="center">
   <img src="docs/img/bankroll_score_history.png" width="720" alt="Best score by round on Bankroll: 9.62 flat sum to 9.88 after 20 rounds">
 </p>
@@ -252,7 +257,7 @@ core/
   awmeter.py          Airwindows Meter port (numba), meter_study.py
   phase0.py, axes.py  judge validation studies
 tests/                harness, loop logic, DAW agent (fake LLM), LLM paths, judge worker
-docs/results/         reports and study data from the runs above
+docs/                 listen page (GitHub Pages), A/B clips, reports and study data
 ```
 
 ## Tests
@@ -273,9 +278,9 @@ python tests/test_judge_worker.py  # needs the GPU judge
   attacker. Approved plugins run in the main process.
 - **Windows GPU timeouts.** On Windows, keep `[score] batch_size` small (default 4). Driver
   timeouts (TDR) can kill long GPU kernels.
-- **No audio here.** Multitracks aren't included. The songs tested are free multitracks from the
-  [Cambridge-MT](https://cambridge-mt.com/ms/mtk/) library, which allows practice use but not
-  redistribution.
+- **No multitracks here.** Only four 30-second demo excerpts are included. The songs tested are
+  free multitracks from the [Cambridge-MT](https://cambridge-mt.com/ms/mtk/) library, which allows
+  practice use but not redistribution.
 
 ## Credits
 

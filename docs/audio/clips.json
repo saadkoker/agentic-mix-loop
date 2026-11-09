@@ -1,0 +1,16 @@
+{
+ "bankroll": {
+  "start_s": 25.0,
+  "end_s": 55.0,
+  "window_gain": 0.348,
+  "song_score_flat": 9.6237,
+  "song_score_best": 9.8836
+ },
+ "teleport": {
+  "start_s": 0.0,
+  "end_s": 30.0,
+  "window_gain": 0.12,
+  "song_score_flat": 9.3346,
+  "song_score_best": 9.4423
+ }
+}

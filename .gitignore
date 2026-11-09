@@ -14,3 +14,4 @@ songs/*
 *.aiff
 *.zip
 phase0_summary.json
+!docs/audio/*.mp3

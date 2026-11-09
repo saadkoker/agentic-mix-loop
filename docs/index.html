@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Agentic Mix Loop: listen</title>
+<meta name="description" content="A/B: the flat sum of the raw multitracks vs the mix LLM agents made, both loudness-matched.">
+<style>
+  :root {
+    --bg: #f7f6f3; --card: #ffffff; --ink: #1b1b1f; --muted: #5d5d66; --line: #e3e1dc;
+    --flat: #8a8f98; --agent: #2f6fe4; --agent-ink: #ffffff;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg: #121316; --card: #1b1d22; --ink: #ecebe8; --muted: #a2a3ab; --line: #2c2f36;
+            --flat: #7c818b; --agent: #5b8ff0; --agent-ink: #0d1020; }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink);
+         font: 16px/1.55 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+  main { max-width: 760px; margin: 0 auto; padding: 48px 16px 64px; }
+  h1 { font-size: 2rem; line-height: 1.2; margin: 0 0 .4rem; letter-spacing: -.01em; }
+  .lede { color: var(--muted); margin: 0 0 1.2rem; }
+  a { color: var(--agent); }
+  .how { font-size: .92rem; color: var(--muted); border-left: 3px solid var(--line); padding: .2rem 0 .2rem .9rem; margin: 0 0 2rem; }
+  .song { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 22px; margin: 0 0 22px; }
+  .song h2 { margin: 0; font-size: 1.3rem; }
+  .meta { color: var(--muted); font-size: .9rem; margin: .15rem 0 1rem; }
+  .player { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+  .play { width: 48px; height: 48px; border-radius: 50%; border: 0; background: var(--ink); color: var(--bg);
+          font-size: 18px; cursor: pointer; flex: none; }
+  .toggle { display: inline-flex; border: 1px solid var(--line); border-radius: 999px; padding: 3px; gap: 3px; }
+  .toggle button { border: 0; background: transparent; color: var(--muted); padding: 8px 14px; border-radius: 999px;
+                   font: inherit; font-size: .92rem; cursor: pointer; }
+  .toggle button[aria-pressed="true"].f { background: var(--flat); color: #fff; }
+  .toggle button[aria-pressed="true"].a { background: var(--agent); color: var(--agent-ink); }
+  .bar { flex: 1 1 160px; height: 6px; background: var(--line); border-radius: 3px; overflow: hidden; cursor: pointer; min-width: 120px; }
+  .bar i { display: block; height: 100%; width: 0; background: var(--ink); }
+  .time { font-variant-numeric: tabular-nums; color: var(--muted); font-size: .85rem; min-width: 40px; }
+  .scores { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 1.1rem 0 .9rem; }
+  .scores div { border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; }
+  .scores b { display: block; font-size: 1.35rem; font-variant-numeric: tabular-nums; }
+  .scores span { color: var(--muted); font-size: .82rem; }
+  .scores .up b { color: var(--agent); }
+  ul { margin: .3rem 0 0; padding-left: 1.2rem; }
+  li { margin: .2rem 0; }
+  footer { color: var(--muted); font-size: .85rem; margin-top: 2rem; }
+  kbd { border: 1px solid var(--line); border-radius: 4px; padding: 0 5px; font-size: .8rem; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Agentic Mix Loop: listen</h1>
+  <p class="lede">The same 30 seconds twice: the raw multitracks summed flat, and the mix a team of LLM agents built
+    on their own, hill-climbing on a neural audio judge. <a href="https://github.com/saadkoker/agentic-mix-loop">Code and write-up on GitHub</a>.</p>
+  <p class="how">Press play, then switch between <b>Flat</b> and <b>Agent mix</b> while it plays (or press <kbd>Space</kbd>).
+    Both versions go through the same fixed limiter and are loudness-matched to −14 LUFS over the whole song, exactly as
+    the judge hears them. In these excerpts the flat version is actually 0.2–0.5 dB louder, so any difference you hear
+    is balance, tone and space, not volume. Each excerpt is the 30-second span where the judge's
+    score rose most. Headphones help.</p>
+
+  <section class="song" data-song="bankroll">
+    <h2>Bankroll</h2>
+    <p class="meta">Tytillidie XXollin · 18 raw tracks as delivered · 20 rounds · <span class="range"></span></p>
+    <div class="player"></div>
+    <div class="scores">
+      <div><span>Flat sum, judge score</span><b>9.624</b></div>
+      <div class="up"><span>Agent mix, judge score</span><b>9.884 (+0.260)</b></div>
+    </div>
+    <ul>
+      <li>Made a lead-vocal group bus (+3 dB) and a reverb send with an automated return</li>
+      <li>Band-limited the FX vocals and pulled them down 12 dB on their own bus</li>
+      <li>Wrote a plugin to centre the piano's low end; rode the piano up in the weakest sections</li>
+      <li>Gated and cut a bleed-heavy sidestick; master EQ dips low-mids only where the mix was weakest</li>
+    </ul>
+  </section>
+
+  <section class="song" data-song="teleport">
+    <h2>Teleport</h2>
+    <p class="meta">Tytillidie XXollin · 7 tracks · 15 rounds (earlier, simpler version of the loop) · <span class="range"></span></p>
+    <div class="player"></div>
+    <div class="scores">
+      <div><span>Flat sum, judge score</span><b>9.335</b></div>
+      <div class="up"><span>Agent mix, judge score</span><b>9.442 (+0.108)</b></div>
+    </div>
+    <ul>
+      <li>Rebalanced: beat down 3 dB, lead vocal up 3 dB</li>
+      <li>Wrote its own plugin to remove outtakes and noise between the lead vocal's phrases</li>
+    </ul>
+  </section>
+
+  <footer>Excerpts of multitracks from the <a href="https://cambridge-mt.com/ms/mtk/">Cambridge-MT</a> library,
+    used for demonstration. All rights to the music belong to the artists.</footer>
+</main>
+<script>
+(() => {
+  const players = [];
+  const fmt = s => `${Math.floor(s / 60)}:${String(Math.floor(s % 60)).padStart(2, "0")}`;
+  fetch("audio/clips.json").then(r => r.json()).then(meta => {
+    for (const [song, m] of Object.entries(meta)) {
+      const el = document.querySelector(`[data-song="${song}"] .range`);
+      if (el) el.textContent = `excerpt ${fmt(m.start_s)}–${fmt(m.end_s)}`;
+    }
+  }).catch(() => {});
+
+  document.querySelectorAll(".song").forEach(card => {
+    const song = card.dataset.song;
+    const flat = new Audio(`audio/${song}_flat.mp3`);
+    const agent = new Audio(`audio/${song}_agent.mp3`);
+    [flat, agent].forEach(a => { a.preload = "auto"; });
+    let which = "agent";
+    const host = card.querySelector(".player");
+    host.innerHTML = `
+      <button class="play" aria-label="Play">&#9654;</button>
+      <div class="toggle" role="group" aria-label="Version">
+        <button class="f" aria-pressed="false">Flat</button>
+        <button class="a" aria-pressed="true">Agent mix</button>
+      </div>
+      <div class="bar" aria-label="Seek"><i></i></div>
+      <span class="time">0:00</span>`;
+    const play = host.querySelector(".play"), bf = host.querySelector(".f"), ba = host.querySelector(".a");
+    const bar = host.querySelector(".bar"), fill = bar.firstElementChild, time = host.querySelector(".time");
+    const cur = () => (which === "agent" ? agent : flat);
+    const other = () => (which === "agent" ? flat : agent);
+    const setVol = () => { cur().volume = 1; other().volume = 0; };
+    const playing = () => !cur().paused;
+    const p = {
+      stop() { flat.pause(); agent.pause(); play.innerHTML = "&#9654;"; play.setAttribute("aria-label", "Play"); },
+      start() {
+        players.forEach(q => q !== p && q.stop());
+        other().currentTime = cur().currentTime;
+        setVol(); flat.play(); agent.play();
+        play.innerHTML = "&#10073;&#10073;"; play.setAttribute("aria-label", "Pause");
+      },
+      pick(v) {
+        if (v === which) return;
+        const t = cur().currentTime; which = v;
+        cur().currentTime = t; other().currentTime = t; setVol();
+        bf.setAttribute("aria-pressed", v === "flat"); ba.setAttribute("aria-pressed", v === "agent");
+      },
+      flip() { p.pick(which === "agent" ? "flat" : "agent"); },
+      playing,
+    };
+    players.push(p);
+    play.onclick = () => (playing() ? p.stop() : p.start());
+    bf.onclick = () => p.pick("flat");
+    ba.onclick = () => p.pick("agent");
+    bar.onclick = e => {
+      const r = bar.getBoundingClientRect(), d = cur().duration || 30;
+      const t = ((e.clientX - r.left) / r.width) * d;
+      flat.currentTime = agent.currentTime = t;
+    };
+    agent.addEventListener("timeupdate", () => {
+      const a = cur(), d = a.duration || 30;
+      fill.style.width = `${(a.currentTime / d) * 100}%`;
+      time.textContent = fmt(a.currentTime);
+      if (Math.abs(flat.currentTime - agent.currentTime) > 0.08) other().currentTime = a.currentTime;
+    });
+    agent.addEventListener("ended", () => { p.stop(); flat.currentTime = agent.currentTime = 0; });
+    setVol();
+  });
+
+  document.addEventListener("keydown", e => {
+    if (e.key !== " ") return;
+    const live = players.find(q => q.playing());
+    if (!live) return;
+    e.preventDefault();
+    live.flip();
+  });
+})();
+</script>
+</body>
+</html>
